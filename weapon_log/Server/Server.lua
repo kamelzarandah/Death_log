@@ -19,12 +19,14 @@ function SendWebhookMessage(webhook,message)
 end 
 AddEventHandler('playerDropped', function(reason)
     local User = VorpCore.getUser(source)
-    local Character = User.getUsedCharacter
-    local isdead = Character.isdead  
-    if isdead and Config.combatlog then
-        local webhook = Config.webhook
-        message = GetPlayerName(source) .. " Combat logged"
-        SendWebhookMessage(webhook,message)
-        isdead = nil
-    end
+        if user ~= nil then 
+            local Character = User.getUsedCharacter
+            local isdead = Character.isdead  
+            if isdead and Config.combatlog then
+                local webhook = Config.webhook
+                message = GetPlayerName(source) .. " Combat logged"
+                SendWebhookMessage(webhook,message)
+                isdead = nil
+            end
+        end
 end)

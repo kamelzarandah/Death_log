@@ -19,5 +19,6 @@ AddEventHandler('playerDropped', function(reason)
         local webhook = Config.webhook
         message = GetPlayerName(source) .. " Combat logged"
         SendWebhookMessage(webhook,message)
+        dead = nil
     end
 end)
